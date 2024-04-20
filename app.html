@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test API</title>
+</head>
+<body>
+    <h1>Modelo de Predicción</h1>
+    <input type="text" id="inputText" placeholder="Introduce texto aquí">
+    <button onclick="sendText()">Predecir</button>
+    <p id="result"></p>
+
+    <script>
+        function sendText() {
+            var text = document.getElementById('inputText').value;
+            fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ texto: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = 'Predicción: ' + data.prediccion;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
