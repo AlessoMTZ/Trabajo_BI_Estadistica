@@ -5,8 +5,7 @@ import joblib
 
 app = FastAPI()
 
-# Carga del modelo y los transformadores como antes
-model = joblib.load('modelo_entrenado.pkl')  # Asegúrate de que esta ruta es correcta
+model = joblib.load('modelo_entrenado.pkl')  
 vectorizer = joblib.load('vectorizer.pkl')
 tfid = joblib.load('tfid_transformer.pkl')
 
